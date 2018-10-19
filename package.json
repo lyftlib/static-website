@@ -1,16 +1,13 @@
 {
   "name": "Github",
   "version": "1.0.0",
-  "description": "A lyft module to manage a git repository",
+  "description": "A lyft module to manage an static-website for s3 bucket",
   "main": "lyftmod",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Guillaume Cassou",
+  "author": "Matisse Brard",
   "license": "MIT",
   "dependencies": {
-    "docopt": "^0.6.2",
-    "github-api": "^3.0.0",
-    "shelljs": "^0.8.2"
   }
 }
