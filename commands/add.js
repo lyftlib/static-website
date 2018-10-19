@@ -6,44 +6,17 @@ const { filter, clone, withError, getStatePath } = require('../src/utils');
 module.exports = {
     // Defines all parameters allowed for this command in the cli
     cli : [
-        '[--repo-name=<repo-name>]',
-        '[--description=<description>]',
-        '[--homepage=<homepage>]',
-        '[--private]',
-        '[--has-issues]',
-        '[--has-projects]',
-        '[--has-wiki]',
-        '[--team-id=<team-id>]',
-        '[--auto-init]',
-        '[--gitignore-template=<gitignore-template>]',
-        '[--license-template=<license-template>]',
-        '[--allow-squash-merge]',
-        '[--allow-commit-merge]',
-        '[--allow-rebase-merge]',
-        '[--clone]',
+        '[--policy]',
     ],
     // Map object used to get only parameters required for this command
     // Interpretation into github-api syntax
     args : {
-        '--repo-name': 'repoName',
-        '--description': 'description',
-        '--homepage': 'homepage',
-        '--private': 'private',
-        '--has-issues': 'has_issues',
-        '--has-projects': 'has_projects',
-        '--has-wiki': 'has_wiki',
-        '--team-id': 'team_id',
-        '--gitignore-template': 'gitignore_template',
-        '--license-template': 'license_template',
-        '--allow-squash-merge': 'allow_squash_merge',
-        '--allow-commit-merge': 'allow_commit_merge',
-        '--allow-rebase-merge': 'allow_rebase_merge',
-        '--clone' : 'clone'
+        '--policy': 'path',
     },
     // The default filter
     filter,
     method(options) {
-        const api = require('../src/github');
+        const api = require('../src/aws-s3');
         // If the user uses the flag --repo-name to rename his repository
         options.name = options.repoName ? options.repoName : options.name;
         const mustClone = options.clone;

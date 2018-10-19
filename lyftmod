@@ -9,16 +9,16 @@ const {overrideEnvVar} = require('./src/utils');
 // Defines all command allowed in the cli
 const doc = `
 USAGE:
-    index.js add <name> [--username=<username>] [--token=<token>] ${add.cli.join(' ')}
-    index.js remove <name> [--username=<username>] [--token=<token>]
-    index.js use <name> [--username=<username>] [--token=<token>] (${use.cli.join(' | ')})
+    index.js add <name> <region> <path-to-dir> [--akey-id=<username>] [--akey-secret=<token>] ${add.cli.join(' ')}
+    index.js remove <name>[--akey-id=<username>] [--akey-secret=<token>]
+    index.js use <name> [--akey-id=<username>] [--akey-secret=<token>] (${use.cli.join(' | ')})
 `;
 const command = docopt(doc, {version: '0.0.1rc'});
 
 // Allows the user to have multiple github accounts in one project
 overrideEnvVar({
-    '--username': 'GITHUB_USERNAME',
-    '--token': 'GITHUB_TOKEN',
+    '--username': 'AWS_AKEY_ID',
+    '--token': 'AWS_AKEY_SECRET',
 }, command);
 
 // Selects the command
